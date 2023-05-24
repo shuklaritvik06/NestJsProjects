@@ -2,10 +2,11 @@ import {
   Controller,
   Post,
   UploadedFile,
+  UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { AppService } from './app.service';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
@@ -42,6 +43,27 @@ export class AppController {
       originalname: file.originalname,
       filename: file.filename,
     };
+    return response;
+  }
+  @Post('multiple')
+  @UseInterceptors(
+    FilesInterceptor('file', 10, {
+      storage: diskStorage({
+        destination: './files',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
+  async uploadMultipleFiles(@UploadedFiles() files) {
+    const response = [];
+    files.forEach((file) => {
+      const fileReponse = {
+        originalname: file.originalname,
+        filename: file.filename,
+      };
+      response.push(fileReponse);
+    });
     return response;
   }
 }

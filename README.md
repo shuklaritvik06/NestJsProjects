@@ -6,3 +6,5 @@ This is a repository to maintain nestjs projects
 - [x] Authentication (JWT)
 - [x] OAuth
 - [x] CLI
+- [x] File Upload
+- [x] GraphQL

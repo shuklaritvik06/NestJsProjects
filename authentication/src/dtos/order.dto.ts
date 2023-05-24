@@ -1,1 +1,4 @@
-export class OrderDTO {}
+export class OrderDTO {
+  order: string;
+  customer: string;
+}

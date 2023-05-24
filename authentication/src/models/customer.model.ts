@@ -18,27 +18,30 @@ export class Customer {
     type: String,
     required: true,
   })
-  address: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
-  phone: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
   email: string;
   @Prop({
     type: String,
     required: true,
   })
-  father_name: string;
+  username: string;
+  @Prop({
+    type: String,
+    required: true,
+  })
+  password: string;
   @Prop({
     type: String,
     default: Date.now,
   })
   created_at: string;
+  @Prop({
+    type: String,
+  })
+  token: string;
+  @Prop({
+    type: String,
+  })
+  refresh_token: string;
   @Prop({
     type: String,
     default: Date.now,

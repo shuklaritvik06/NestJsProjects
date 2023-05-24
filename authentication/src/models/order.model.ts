@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
+import { Customer } from './customer.model';
 
 export type OrderDocument = HydratedDocument<Order>;
 
@@ -13,37 +14,9 @@ export class Order {
     type: String,
     required: true,
   })
-  name: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
-  address: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
-  phone: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
-  email: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
-  father_name: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
-  created_at: string;
-  @Prop({
-    type: String,
-    required: true,
-  })
-  updated_at: string;
+  order: string;
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Customer' }] })
+  customer: Customer;
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);

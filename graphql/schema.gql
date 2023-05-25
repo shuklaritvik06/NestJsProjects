@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Order {
+  order_name: String!
+  order_delivery: String!
+}
+
+type Response {
+  status: String!
+  author: String!
+  description: String!
+  apiVersion: String!
+}
+
+type Query {
+  status: Response!
+  getOrders: [Order!]!
+  getOrder(id: String!): [Order!]!
+}
+
+type Mutation {
+  addOrder(input: OrderInput!): Order!
+  deleteOrder(id: String!): Order!
+  updateOrder(id: String!, input: OrderInput!): Order!
+}
+
+input OrderInput {
+  order_name: String!
+  order_delivery: String!
+}

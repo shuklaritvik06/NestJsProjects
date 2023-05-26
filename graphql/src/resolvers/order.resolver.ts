@@ -17,12 +17,12 @@ export class OrderResolver {
     };
   }
   @Query(() => [OrderResponse])
-  getOrders() {
-    return this.orderService.findAll();
+  async getOrders() {
+    return await this.orderService.findAll();
   }
-  @Query(() => [OrderResponse])
-  getOrder(@Args('id') id: string) {
-    return this.orderService.findById(id);
+  @Query(() => OrderResponse)
+  async getOrder(@Args('id') id: string) {
+    return await this.orderService.findById(id);
   }
   @Mutation(() => OrderResponse)
   async addOrder(@Args('input') input: OrderInput) {

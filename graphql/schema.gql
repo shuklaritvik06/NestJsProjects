@@ -17,7 +17,7 @@ type Response {
 type Query {
   status: Response!
   getOrders: [Order!]!
-  getOrder(id: String!): [Order!]!
+  getOrder(id: String!): Order!
 }
 
 type Mutation {

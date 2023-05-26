@@ -5,7 +5,7 @@ export type CustomerDocument = HydratedDocument<Order>;
 
 @Schema({
   autoCreate: true,
-  collection: 'customers',
+  collection: 'orders',
   minimize: true,
 })
 export class Order {
